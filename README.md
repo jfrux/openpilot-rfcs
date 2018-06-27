@@ -1,5 +1,8 @@
 # The Proposal
-This is just my vision for what I'd love to see openpilot look and how it should work in future versions of the system.  This is unofficial and not affiliated with Comma.ui, Inc.
+This is just my vision for what I'd love openpilot to look like and how it should work in future versions of the system.
+
+This is unofficial and not affiliated with Comma.ui, Inc.
+Whether or not these RFCs end up in openpilot will be published here as well.
 
 ## Todos
 - [ ] openpilot is [ready|not ready]
