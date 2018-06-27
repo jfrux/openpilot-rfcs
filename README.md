@@ -1,78 +1,109 @@
-# Openpilot UI RFCs
-This is just my vision for a place to store unofficial RFC's for the developer community centered around `commaai/openpilot`.
+# openpilot RFCs
 
-This is unofficial and not affiliated with Comma.ui, Inc.
-Whether or not these RFCs end up in openpilot will be published here as well.
+Many changes, including bug fixes and documentation improvements can be
+implemented and reviewed via the normal commaai/openpilot GitHub pull request workflow.
 
-## Initial RFC Ideas
-- [ ] openpilot is [ready|not ready]
-  - [ ] ready screen
-    - [x] create & present basic concept
-    - [ ] add additional state information on the left / right of the start button (within reason)
-      - [ ] display any accessories / modules that it detects in the CAN with icon
-        - [ ] create & present concept showing the Comma Pedal being detected for instance
-        - [ ] future versions might need to show status of external cameras, sensors, etc.
-  - [ ] not ready screen
-    - [ ] show reasons, make it obvious that something is wrong
-    - [ ] have options to expand out more information about what happened
-    - [ ] suggest reasons why it may have happened
-- [ ] connect eon to panda
-  - [x] create & present basic concept
-  - [ ] ideally would have additional states as well
-  - [ ] should transition to a (possibly green) connected screen, maybe even animate the connection happening, possibly audible sound, then dump into the `openpilot is ready` screen
-- [ ] drive
-  - [ ] engaged
-    - [ ] create & present basic concept
-  - [ ] disengaged
-    - [ ] create & present basic concept
-- [ ] settings
-  - [ ] shows fingerprint detected
-    - [ ] drills down into which CAN information is labeled in opendbc possibly?
-    - [ ] possibly have ON/OFF or GREEN/RED UI state when those things are detected
+Some changes though are "substantial", and my thoughts are that these be put
+through a bit of a design process and produce a consensus among the openpilot community.
 
-## Other various minddumps before things start getting more formal
-### Boot
-This is only shown when EON powers on and openpilot is starting. 
-It's pretty much the same as the original.
+The "RFC" (request for comments) process is intended to provide a
+consistent and controlled path for new features to enter the codebase & ui.
 
-### Global UI
-The `overlay` image is the text overlayed over the entire OS.
-The large text at the bottom can be called upon at any time to display state.
-It should be a singleton.
+## When should you follow this process
 
-Anytime we need some text shown to the user, we can use this area.
+I recommend you follow this process if you intend to make "substantial"
+changes to openpilot, or its documentation. What constitutes a
+"substantial" change is evolving based on community norms, but may
+include the following.
 
-### Uploading your drives
-This is kind of a redesign of the existing "Home screen" but is only shown when it is currently uploading your drives.
+   - A new feature that creates new surface area, require significant changes if introduced, and could be included a NEW FEATURE of openpilot.
+   - The removal of features that already shipped as part of a release.
+   - The introduction of new idiomatic usage or conventions, even if they
+     do not include code changes to openpilot itself.
 
-### Connect EON to Panda
-This screen is shown whenever you're not uploading and you're not connected to a vehicle.
-I envision an abstract icon-like version of the panda plugging into an abstract icon-like version on the EON via a nice and clean white USB cable.  Could even be animated.
+Some changes do not require an RFC:
 
-### Openpilot is ready
-Will be shown after EON is connected to Panda and it is paired without errors.
-It goes away when you start your engine.
+   - Rephrasing, reorganizing or refactoring
+   - Addition or removal of warnings
+   - Additions that strictly improve objective, numerical quality
+criteria (speedup, better performance)
+   - Additions only likely to be _noticed by_ other implementors-of-openpilot,
+invisible to drivers-of-openpilot.
 
-The bubble at the top would be used to display the linked fingerprint.
-This is mainly just for "looks" but also reassures the user that a fingerprint has been found in better UX-y way... that's like sexy but UX.
+<!-- If you submit a pull request to implement a new feature without going
+through the RFC process, it may be closed with a polite request to
+submit an RFC first. -->
 
-### Openpilot is not ready
-Will be shown when there were errors, or services did not quite start.
-Possibly could show exceptions that were thrown during initialization.
+## Gathering feedback before submitting
 
-### Drive
-This screen will be the overlay / HUD related information that will be shown during drives and engagements.
+It's often helpful to get feedback on your concept before diving into the
+level of design detail required for an RFC. **You may open an
+issue on this repo to start a high-level discussion**, with the goal of
+eventually formulating an RFC pull request with the specific implementation
+design.
 
-It doesn't need a video output anymore, it could just be some sort of HUD information about speed, lane tracking status indication, GPS information, whether we're on an HD Mapped Route for instance might be nice, etc.
+## What the process is
 
-#### Drive / Engaged
-TBD
-#### Drive / Disengaged
-TBD
-#### Drive / Error
-TBD
+In short, one should first get the
+RFC merged into the RFC repo as a markdown file. At that point the RFC
+is open to consideration by the community and may be implemented with the goal of eventual inclusion
+into openpilot by developers in the community or Comma.ai themselves if they decide they support the proposals.
 
-## Contributing
-To contribute, you are welcome to load the `.fig` file on your computer and save changes back to that `.fig` file and commit it up in a pull request.
+* Fork the RFC repo http://github.com/jfrux/openpilot-rfcs
+* Copy `0000-template.md` to `text/0000-my-feature.md` (where
+'my-feature' is descriptive. don't assign an RFC number yet).
+* Fill in the RFC. Put care into the details: **RFCs that do not
+present convincing motivation, demonstrate understanding of the
+impact of the design, or are disingenuous about the drawbacks or
+alternatives tend to be poorly-received**.
+* Submit a pull request. As a pull request the RFC will receive design
+feedback from the larger community, and the author should be prepared
+to revise it in response.
+* Build consensus and integrate feedback. RFCs that have broad support
+are much more likely to make progress than those that don't receive any
+comments.
+* Eventually, the community will decide whether the RFC is a candidate
+for inclusion in openpilot and whether to create an official PR.
+* An RFC can be modified based upon feedback from the community.
+Significant modifications may trigger a new final comment period.
+* An RFC may be rejected by the community after public discussion has settled
+and comments have been made summarizing the rationale for rejection. A member of
+the openpilot community should then close the RFC's associated pull request.
+* At any point an RFC maybe accepted and developed by a community developer or designer and it is recommended that you leave a comment on this RFC noting the repository fork / change.
 
-I'm also open to doing live design sessions in Figma with others that are interested in contributing and see what we can come up with together.
+## The RFC life-cycle
+
+Once an RFC is created then authors should make every attempt to implement it and submit the
+feature as a pull request to the commaai/openpilot repo.
+
+Furthermore, the fact that a given RFC is created implies nothing about what priority is assigned to its
+implementation, nor whether anybody is currently working on it.
+
+Modifications to RFC's can be done in followup PR's. We strive
+to write each RFC in a manner that it will reflect the final design of
+the feature; but the nature of the process means that we cannot expect
+every merged RFC to actually reflect what the end result will be at
+the time of the next major release; therefore we try to keep each RFC
+document somewhat in sync with the language feature as planned,
+tracking such changes via followup pull requests to the document.
+
+## Implementing an RFC
+
+The author of an RFC is not obligated to implement it. Of course, the
+RFC author (like any other developer / designer) is welcome to post an
+implementation for review after the RFC has been merged.
+
+If you are interested in working on the implementation for an RFC, but cannot determine if someone else is already working on it,
+feel free to ask (e.g. by leaving a comment on the associated issue or via Comma Slack).
+
+## Reviewing RFC's
+
+Each week someone from the community appointed members that moderate the RFCs repository will attempt to review some set of open RFC
+pull requests.
+
+We try to make sure that any RFC that is created will be merged weekly. Every
+merged RFC should ideally have a referenced `fork` or `branch` of `commaai/openpilot` and optionally an existing PR associated with it.
+
+**We owe this RFC process to the [Rust RFC process]**
+
+[Rust RFC process]: https://github.com/rust-lang/rfcs
