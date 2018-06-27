@@ -2,7 +2,7 @@
 This is just my vision for what I'd love to see openpilot look and how it should work in future versions of the system.  This is unofficial and not affiliated with Comma.ui, Inc.
 
 ## Todos
-- [ ] **openpilot is [ready|not ready]**
+- [ ] openpilot is [ready|not ready]
   - [ ] ready screen
     - [x] create & present basic concept
     - [ ] add additional state information on the left / right of the start button (within reason)
@@ -13,16 +13,16 @@ This is just my vision for what I'd love to see openpilot look and how it should
     - [ ] show reasons, make it obvious that something is wrong
     - [ ] have options to expand out more information about what happened
     - [ ] suggest reasons why it may have happened
-- [ ] **connect eon to panda**
+- [ ] connect eon to panda
   - [x] create & present basic concept
   - [ ] ideally would have additional states as well
   - [ ] should transition to a (possibly green) connected screen, maybe even animate the connection happening, possibly audible sound, then dump into the `openpilot is ready` screen
-- [ ] **drive**
+- [ ] drive
   - [ ] engaged
     - [ ] create & present basic concept
   - [ ] disengaged
     - [ ] create & present basic concept
-- [ ] **settings**
+- [ ] settings
   - [ ] shows fingerprint detected
     - [ ] drills down into which CAN information is labeled in opendbc possibly?
     - [ ] possibly have ON/OFF or GREEN/RED UI state when those things are detected
