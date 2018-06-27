@@ -1,10 +1,10 @@
-# The Proposal
-This is just my vision for what I'd love openpilot to look like and how it should work in future versions of the system.
+# Openpilot UI RFCs
+This is just my vision for a place to store unofficial RFC's for the developer community centered around `commaai/openpilot`.
 
 This is unofficial and not affiliated with Comma.ui, Inc.
 Whether or not these RFCs end up in openpilot will be published here as well.
 
-## Todos
+## Initial RFC Ideas
 - [ ] openpilot is [ready|not ready]
   - [ ] ready screen
     - [x] create & present basic concept
@@ -30,7 +30,7 @@ Whether or not these RFCs end up in openpilot will be published here as well.
     - [ ] drills down into which CAN information is labeled in opendbc possibly?
     - [ ] possibly have ON/OFF or GREEN/RED UI state when those things are detected
 
-## Thoughts & Ideas
+## Other various minddumps before things start getting more formal
 ### Boot
 This is only shown when EON powers on and openpilot is starting. 
 It's pretty much the same as the original.
