@@ -1,0 +1,331 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <base href="">
+
+        <link rel="stylesheet" href="book.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <link rel="shortcut icon" href="favicon.png">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme -->
+        
+
+        
+
+        <!-- Fetch Clipboard.js from CDN but have a local fallback -->
+        <script src="https://cdn.jsdelivr.net/clipboard.js/1.6.1/clipboard.min.js"></script>
+        <script>
+            if (typeof Clipboard == 'undefined') {
+                document.write(unescape("%3Cscript src='clipboard.min.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch JQuery from CDN but have a local fallback -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script>
+            if (typeof jQuery == 'undefined') {
+                document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
+            }
+        </script>
+
+        <!-- Fetch store.js from local - TODO add CDN when 2.x.x is available on cdnjs -->
+        <script src="store.js"></script>
+
+        <!-- Custom JS script -->
+        
+
+    </head>
+    <body class="light">
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme = store.get('mdbook-theme');
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            $('body').removeClass().addClass(theme);
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var sidebar = store.get('mdbook-sidebar');
+            if (sidebar === "hidden") { $("html").addClass("sidebar-hidden") }
+            else if (sidebar === "visible") { $("html").addClass("sidebar-visible") }
+        </script>
+
+        <div id="sidebar" class="sidebar">
+            <ul class="chapter"><li class="affix"><a href="introduction.html">Introduction</a></li><li><a href="0000-new-ui-overhaul.html"><strong>1.</strong> 0000-new-ui-overhaul</a></li></ul>
+        </div>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page" tabindex="-1">
+                <div id="menu-bar" class="menu-bar">
+                    <div class="left-buttons">
+                        <i id="sidebar-toggle" class="fa fa-bars"></i>
+                        <i id="theme-toggle" class="fa fa-paint-brush"></i>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html">
+                            <i id="print-button" class="fa fa-print" title="Print this book"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="content" class="content">
+                    <a class="header" href="print.html#openpilot-rfcs" id="openpilot-rfcs"><h1>openpilot RFCs</h1></a>
+<p><a href="https://travis-ci.org/jfrux/openpilot-rfcs"><img src="https://travis-ci.org/jfrux/openpilot-rfcs.svg?branch=master" alt="Build Status" /></a></p>
+<p>Many changes, including bug fixes and documentation improvements can be
+implemented and reviewed via the normal commaai/openpilot GitHub pull request workflow.</p>
+<p>Some changes though are &quot;substantial&quot;, and my thoughts are that these be put
+through a bit of a design process and produce a consensus among the openpilot community.</p>
+<p>The &quot;RFC&quot; (request for comments) process is intended to provide a
+consistent and controlled path for new features to enter the codebase &amp; ui.</p>
+<a class="header" href="print.html#when-should-you-follow-this-process" id="when-should-you-follow-this-process"><h2>When should you follow this process</h2></a>
+<p>I recommend you follow this process if you intend to make &quot;substantial&quot;
+changes to openpilot, or its documentation. What constitutes a
+&quot;substantial&quot; change is evolving based on community norms, but may
+include the following.</p>
+<ul>
+<li>A new feature that creates new surface area, require significant changes if introduced, and could be included a NEW FEATURE of openpilot.</li>
+<li>The removal of features that already shipped as part of a release.</li>
+<li>The introduction of new idiomatic usage or conventions, even if they
+do not include code changes to openpilot itself.</li>
+</ul>
+<p>Some changes do not require an RFC:</p>
+<ul>
+<li>Rephrasing, reorganizing or refactoring</li>
+<li>Addition or removal of warnings</li>
+<li>Additions that strictly improve objective, numerical quality
+criteria (speedup, better performance)</li>
+<li>Additions only likely to be <em>noticed by</em> other implementors-of-openpilot,
+invisible to drivers-of-openpilot.</li>
+</ul>
+<!-- If you submit a pull request to implement a new feature without going
+through the RFC process, it may be closed with a polite request to
+submit an RFC first. -->
+<a class="header" href="print.html#gathering-feedback-before-submitting" id="gathering-feedback-before-submitting"><h2>Gathering feedback before submitting</h2></a>
+<p>It's often helpful to get feedback on your concept before diving into the
+level of design detail required for an RFC. <strong>You may open an
+issue on this repo to start a high-level discussion</strong>, with the goal of
+eventually formulating an RFC pull request with the specific implementation
+design.</p>
+<a class="header" href="print.html#what-the-process-is" id="what-the-process-is"><h2>What the process is</h2></a>
+<p>In short, one should first get the
+RFC merged into the RFC repo as a markdown file. At that point the RFC
+is open to consideration by the community and may be implemented with the goal of eventual inclusion
+into openpilot by developers in the community or Comma.ai themselves if they decide they support the proposals.</p>
+<ul>
+<li>Fork the RFC repo http://github.com/jfrux/openpilot-rfcs</li>
+<li>Copy <code>0000-template.md</code> to <code>text/0000-my-feature.md</code> (where
+'my-feature' is descriptive. don't assign an RFC number yet).</li>
+<li>Fill in the RFC. Put care into the details: <strong>RFCs that do not
+present convincing motivation, demonstrate understanding of the
+impact of the design, or are disingenuous about the drawbacks or
+alternatives tend to be poorly-received</strong>.</li>
+<li>Submit a pull request. As a pull request the RFC will receive design
+feedback from the larger community, and the author should be prepared
+to revise it in response.</li>
+<li>Build consensus and integrate feedback. RFCs that have broad support
+are much more likely to make progress than those that don't receive any
+comments.</li>
+<li>Eventually, the community will decide whether the RFC is a candidate
+for inclusion in openpilot and whether to create an official PR.</li>
+<li>An RFC can be modified based upon feedback from the community.
+Significant modifications may trigger a new final comment period.</li>
+<li>An RFC may be rejected by the community after public discussion has settled
+and comments have been made summarizing the rationale for rejection. A member of
+the openpilot community should then close the RFC's associated pull request.</li>
+<li>At any point an RFC maybe accepted and developed by a community developer or designer and it is recommended that you leave a comment on this RFC noting the repository fork / change.</li>
+</ul>
+<a class="header" href="print.html#the-rfc-life-cycle" id="the-rfc-life-cycle"><h2>The RFC life-cycle</h2></a>
+<p>Once an RFC is created then authors should make every attempt to implement it and submit the
+feature as a pull request to the commaai/openpilot repo.</p>
+<p>Furthermore, the fact that a given RFC is created implies nothing about what priority is assigned to its
+implementation, nor whether anybody is currently working on it.</p>
+<p>Modifications to RFC's can be done in followup PR's. We strive
+to write each RFC in a manner that it will reflect the final design of
+the feature; but the nature of the process means that we cannot expect
+every merged RFC to actually reflect what the end result will be at
+the time of the next major release; therefore we try to keep each RFC
+document somewhat in sync with the language feature as planned,
+tracking such changes via followup pull requests to the document.</p>
+<a class="header" href="print.html#implementing-an-rfc" id="implementing-an-rfc"><h2>Implementing an RFC</h2></a>
+<p>The author of an RFC is not obligated to implement it. Of course, the
+RFC author (like any other developer / designer) is welcome to post an
+implementation for review after the RFC has been merged.</p>
+<p>If you are interested in working on the implementation for an RFC, but cannot determine if someone else is already working on it,
+feel free to ask (e.g. by leaving a comment on the associated issue or via Comma Slack).</p>
+<a class="header" href="print.html#reviewing-rfcs" id="reviewing-rfcs"><h2>Reviewing RFC's</h2></a>
+<p>Each week someone from the community appointed members that moderate the RFCs repository will attempt to review some set of open RFC
+pull requests.</p>
+<p>We try to make sure that any RFC that is created will be merged weekly. Every
+merged RFC should ideally have a referenced <code>fork</code> or <code>branch</code> of <code>commaai/openpilot</code> and optionally an existing PR associated with it.</p>
+<p><strong>We owe this RFC process to the <a href="https://github.com/rust-lang/rfcs">Rust RFC process</a></strong></p>
+<ul>
+<li>Start Date: 2018-06-27</li>
+<li>RFC PR: (leave this empty)</li>
+<li>Openpilot Issue: (leave this empty)</li>
+</ul>
+<a class="header" href="print.html#ui-proposal-for-eon--openpilot" id="ui-proposal-for-eon--openpilot"><h1>UI Proposal for EON + Openpilot</h1></a>
+<a class="header" href="print.html#summary" id="summary"><h2>Summary</h2></a>
+<p>This RFC represents my proposal for the next UI for openpilot.  It is calling for an overhaul of the entire user experience.</p>
+<a class="header" href="print.html#motivation" id="motivation"><h2>Motivation</h2></a>
+<p>The need for a separation between the existing <code>Dashcam</code> concept is growing stronger and strong everyday. Openpilot needs a dedicated UI that exludes its existing packaged Waze and Spotify apk's and focuses more on the driver and what the driver needs.</p>
+<a class="header" href="print.html#detailed-design" id="detailed-design"><h2>Detailed design</h2></a>
+<a class="header" href="print.html#screen-brainstorming--possible-tasks-for-figma" id="screen-brainstorming--possible-tasks-for-figma"><h3>Screen brainstorming &amp; possible tasks for Figma</h3></a>
+<ul>
+<li>[ ] openpilot is [ready|not ready]
+<ul>
+<li>[ ] ready screen
+<ul>
+<li>[x] create &amp; present basic concept</li>
+<li>[ ] add additional state information on the left / right of the start button (within reason)
+<ul>
+<li>[ ] display any accessories / modules that it detects in the CAN with icon
+<ul>
+<li>[ ] create &amp; present concept showing the Comma Pedal being detected for instance</li>
+<li>[ ] future versions might need to show status of external cameras, sensors, etc.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>[ ] not ready screen
+<ul>
+<li>[ ] show reasons, make it obvious that something is wrong</li>
+<li>[ ] have options to expand out more information about what happened</li>
+<li>[ ] suggest reasons why it may have happened</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>[ ] connect eon to panda
+<ul>
+<li>[x] create &amp; present basic concept</li>
+<li>[ ] ideally would have additional states as well</li>
+<li>[ ] should transition to a (possibly green) connected screen, maybe even animate the connection happening, possibly audible sound, then dump into the <code>openpilot is ready</code> screen</li>
+</ul>
+</li>
+<li>[ ] drive
+<ul>
+<li>[ ] engaged
+<ul>
+<li>[ ] create &amp; present basic concept</li>
+</ul>
+</li>
+<li>[ ] disengaged
+<ul>
+<li>[ ] create &amp; present basic concept</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>[ ] settings
+<ul>
+<li>[ ] shows fingerprint detected
+<ul>
+<li>[ ] drills down into which CAN information is labeled in opendbc possibly?</li>
+<li>[ ] possibly have ON/OFF or GREEN/RED UI state when those things are detected</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<a class="header" href="print.html#boot" id="boot"><h3>Boot</h3></a>
+<p>This is only shown when EON powers on and openpilot is starting.
+It's pretty much the same as the original.</p>
+<a class="header" href="print.html#global-ui" id="global-ui"><h3>Global UI</h3></a>
+<p>The <code>overlay</code> image is the text overlayed over the entire OS.
+The large text at the bottom can be called upon at any time to display state.
+It should be a singleton.</p>
+<p>Anytime we need some text shown to the user, we can use this area.</p>
+<a class="header" href="print.html#uploading-your-drives" id="uploading-your-drives"><h3>Uploading your drives</h3></a>
+<p>This is kind of a redesign of the existing &quot;Home screen&quot; but is only shown when it is currently uploading your drives.</p>
+<a class="header" href="print.html#connect-eon-to-panda" id="connect-eon-to-panda"><h3>Connect EON to Panda</h3></a>
+<p>This screen is shown whenever you're not uploading and you're not connected to a vehicle.
+I envision an abstract icon-like version of the panda plugging into an abstract icon-like version on the EON via a nice and clean white USB cable.  Could even be animated.</p>
+<a class="header" href="print.html#openpilot-is-ready" id="openpilot-is-ready"><h3>Openpilot is ready</h3></a>
+<p>Will be shown after EON is connected to Panda and it is paired without errors.
+It goes away when you start your engine.</p>
+<p>The bubble at the top would be used to display the linked fingerprint.
+This is mainly just for &quot;looks&quot; but also reassures the user that a fingerprint has been found in better UX-y way... that's like sexy but UX.</p>
+<a class="header" href="print.html#openpilot-is-not-ready" id="openpilot-is-not-ready"><h3>Openpilot is not ready</h3></a>
+<p>Will be shown when there were errors, or services did not quite start.
+Possibly could show exceptions that were thrown during initialization.</p>
+<a class="header" href="print.html#drive" id="drive"><h3>Drive</h3></a>
+<p>This screen will be the overlay / HUD related information that will be shown during drives and engagements.</p>
+<p>It doesn't need a video output anymore, it could just be some sort of HUD information about speed, lane tracking status indication, GPS information, whether we're on an HD Mapped Route for instance might be nice, etc.</p>
+<a class="header" href="print.html#drive--engaged" id="drive--engaged"><h4>Drive / Engaged</h4></a>
+<p>TBD</p>
+<a class="header" href="print.html#drive--disengaged" id="drive--disengaged"><h4>Drive / Disengaged</h4></a>
+<p>TBD</p>
+<a class="header" href="print.html#drive--error" id="drive--error"><h4>Drive / Error</h4></a>
+<p>TBD</p>
+<a class="header" href="print.html#how-we-explain-this-to-drivers" id="how-we-explain-this-to-drivers"><h2>How We Explain This To Drivers</h2></a>
+<p>N/A</p>
+<a class="header" href="print.html#drawbacks" id="drawbacks"><h2>Drawbacks</h2></a>
+<p>N/A</p>
+<a class="header" href="print.html#alternatives" id="alternatives"><h2>Alternatives</h2></a>
+<p>N/A</p>
+<a class="header" href="print.html#unresolved-questions" id="unresolved-questions"><h2>Unresolved questions</h2></a>
+<p>N/A</p>
+
+                </div>
+
+                <!-- Mobile navigation buttons -->
+                
+
+                
+
+            </div>
+
+            
+
+            
+
+        </div>
+
+
+        <!-- Local fallback for Font Awesome -->
+        <script>
+            if ($(".fa").css("font-family") !== "FontAwesome") {
+                $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
+            }
+        </script>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        
+
+        
+
+        
+
+        
+        <script>
+            $(document).ready(function() {
+                window.print();
+            })
+        </script>
+        
+
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+    </body>
+</html>
