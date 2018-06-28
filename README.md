@@ -1,4 +1,5 @@
 # openpilot RFCs
+[![Build Status](https://travis-ci.org/jfrux/openpilot-rfcs.svg?branch=master)](https://travis-ci.org/jfrux/openpilot-rfcs)
 
 Many changes, including bug fixes and documentation improvements can be
 implemented and reviewed via the normal commaai/openpilot GitHub pull request workflow.
