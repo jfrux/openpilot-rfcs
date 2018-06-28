@@ -22,6 +22,7 @@ The need for a separation between the existing `Dashcam` concept is growing stro
       - [ ] display any accessories / modules that it detects in the CAN with icon
         - [ ] create & present concept showing the Comma Pedal being detected for instance
         - [ ] future versions might need to show status of external cameras, sensors, etc.
+      - [ ] Add a `My Drives` button somewhere.
   - [ ] not ready screen
     - [ ] show reasons, make it obvious that something is wrong
     - [ ] have options to expand out more information about what happened
